@@ -6,15 +6,15 @@ import { Iterable } from 'immutable';
 export function denormalize(object, entities, schema) {
 
   if (!Iterable.isIterable(entities)) {
-    throw new Error('Denormalize accepts an immutable object as its entities.');
+    throw new Error('Denormalizr-immutable accepts an immutable object as its entities.');
   }
 
   if (!isObject(schema) || Array.isArray(schema)) {
-    throw new Error('Denormalize accepts an object for schema.');
+    throw new Error('Denormalizr-immutable accepts an object for schema.');
   }
 
   if (['EntitySchema', 'ArraySchema'].indexOf(schema.constructor.name) === -1) {
-    throw new Error('Denormalize accepts an EntitySchema or ArraySchema for schema.');
+    throw new Error('Denormalizr-immutable accepts an EntitySchema or ArraySchema for schema.');
   }
 
   if (!object) {
