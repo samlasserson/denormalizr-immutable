@@ -4,7 +4,7 @@ var should = require('chai').should();
 var range = require('lodash/range');
 var sample = require('lodash/sample');
 
-var denormalize = require('../src').default;
+var denormalize = require('../src').denormalize;
 
 var immutable = require('immutable');
 var fromJS = immutable.fromJS;

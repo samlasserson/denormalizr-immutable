@@ -3,7 +3,7 @@ import forIn from 'lodash/forIn';
 import isObject from 'lodash/isObject';
 import { Iterable } from 'immutable';
 
-export default function denormalize(object, entities, schema) {
+export function denormalize(object, entities, schema) {
 
   if (!Iterable.isIterable(entities)) {
     throw new Error('Denormalize accepts an immutable object as its entities.');
