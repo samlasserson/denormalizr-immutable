@@ -3,6 +3,11 @@
   "version": "0.0.0",
   "description": "Denormalizer for normalizr using immutable data",
   "main": "lib/index.js",
+  "files": [
+    "dist",
+    "lib",
+    "src"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/dehbmarques/denormalizr-immutable.git"
