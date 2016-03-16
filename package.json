@@ -1,6 +1,6 @@
 {
   "name": "denormalizr-immutable",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Denormalizer for normalizr using immutable data",
   "main": "lib/index.js",
   "files": [
