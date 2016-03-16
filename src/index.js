@@ -2,6 +2,8 @@ import pickBy from 'lodash/pickBy';
 import forIn from 'lodash/forIn';
 import isObject from 'lodash/isObject';
 import { Iterable } from 'immutable';
+import ArraySchema from 'normalizr/lib/IterableSchema';
+import EntitySchema from 'normalizr/lib/EntitySchema';
 
 export function denormalize(object, entities, schema) {
 
@@ -13,7 +15,7 @@ export function denormalize(object, entities, schema) {
     throw new Error('Denormalizr-immutable accepts an object for schema.');
   }
 
-  if (['EntitySchema', 'ArraySchema'].indexOf(schema.constructor.name) === -1) {
+  if (!(schema instanceof EntitySchema || schema instanceof ArraySchema)) {
     throw new Error('Denormalizr-immutable accepts an EntitySchema or ArraySchema for schema.');
   }
 
@@ -21,7 +23,7 @@ export function denormalize(object, entities, schema) {
     return object;
   }
 
-  if (schema.constructor.name === 'ArraySchema') {
+  if (schema instanceof ArraySchema) {
     return denormalizeArray(object, entities, schema);
   }
 
@@ -44,13 +46,13 @@ function denormalizeArray(object, entities, schema) {
 function denormalizeEntity(object, entities, schema) {
 
   const associations = pickBy(schema, key =>
-    ['EntitySchema', 'ArraySchema'].indexOf(key.constructor.name) > -1
+    key instanceof EntitySchema || key instanceof ArraySchema
   );
 
   let denormalized = object;
   forIn(associations, (_schema, key) => {
 
-    const isArray = _schema.constructor.name === 'ArraySchema';
+    const isArray = _schema instanceof ArraySchema;
 
     if (isArray) {
       denormalized = denormalized.update(key, ids =>
