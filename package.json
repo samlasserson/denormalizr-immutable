@@ -13,7 +13,7 @@
     "url": "https://github.com/dehbmarques/denormalizr-immutable.git"
   },
   "scripts": {
-    "test": "mocha --compilers --harmony-proxies js:babel-core/register --recursive",
+    "test": "mocha --compilers js:babel-core/register --recursive",
     "test:watch": "npm run test -- --watch",
     "prebuild": "rimraf dist lib",
     "build": "webpack && babel src --out-dir lib",
