@@ -35,7 +35,7 @@ export function denormalize(object, entities, schema) {
 
 function getEntity(id, entities, schema) {
 
-  const entity = entities.getIn([schema.getKey(), `${id}`]);
+  const entity = entities.getIn([schema.getKey(), id]);
   return entity && denormalize(entity, entities, schema);
 }
 
